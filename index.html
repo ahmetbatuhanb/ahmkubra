@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmet & Kübra</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+}
+
+/* LOGIN */
+#login{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+}
+#login input{
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    margin-top:10px;
+}
+#login button{
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* MAIN LAYOUT */
+#site{
+    display:none;
+}
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:220px;
+    height:100vh;
+    padding:40px 20px;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:22px;
+}
+
+.sidebar small{
+    display:block;
+    margin-top:10px;
+    font-size:16px;
+}
+
+.content{
+    margin-left:240px;
+    padding:40px;
+}
+
+.nav{
+    position:fixed;
+    top:20px;
+    right:40px;
+}
+
+.nav a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+img{
+    max-width:100%;
+    border-radius:15px;
+    margin:20px 0;
+}
+
+.poem{
+    margin-top:20px;
+    line-height:1.8;
+    white-space:pre-line;
+}
+
+.gallery img{
+    margin-bottom:30px;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+    <h2>🔒 Sadece Sana Özel</h2>
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="checkPassword()">Giriş</button>
+    <p id="error"></p>
+</div>
+
+<!-- SITE -->
+<div id="site">
+
+<div class="sidebar">
+    Ahmet & Kübra
+    <small>22.10.25</small>
+</div>
+
+<div class="nav">
+    <a onclick="showSection('home')">Ana Sayfa</a>
+    <a onclick="showSection('months')">Ay Ay Biz</a>
+    <a onclick="showSection('letter')">Mektup</a>
+</div>
+
+<div class="content">
+
+    <!-- ANA SAYFA -->
+    <div id="home" class="section active">
+        <h1>Hoş Geldin ❤️</h1>
+        <p>Hayatımın en güzel hikayesinin kahramanı...</p>
+
+        <img src="foto1.jpg">
+
+        <div class="poem">
+Sen kalbimin en sessiz yerinde,
+Ama en güçlü yankısısın...
+        </div>
+    </div>
+
+    <!-- AY AY BİZ -->
+    <div id="months" class="section">
+        <h1>Ay Ay Biz ✨</h1>
+        <div class="gallery">
+            <img src="ay1.jpg">
+            <p>İlk ayımız... Her şeyin başladığı zaman.</p>
+
+            <img src="ay2.jpg">
+            <p>Birlikte güldüğümüz günler...</p>
+
+            <img src="ay3.jpg">
+            <p>Birbirimize daha da bağlandığımız anlar...</p>
+        </div>
+    </div>
+
+    <!-- MEKTUP -->
+    <div id="letter" class="section">
+        <h1>Sana Bir Mektup 💌</h1>
+        <p>
+Buraya ona yazacağın uzun mektup gelecek...
+Kalbinden ne geçiyorsa.
+        </p>
+    </div>
+
+</div>
+</div>
+
+<script>
+function checkPassword(){
+    var password=document.getElementById("password").value;
+
+    if(password==="kubra2025"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("site").style.display="block";
+    }else{
+        document.getElementById("error").innerText="Yanlış şifre...";
+    }
+}
+
+function showSection(id){
+    var sections=document.querySelectorAll(".section");
+    sections.forEach(function(sec){
+        sec.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+}
+</script>
+
+</body>
+</html>
